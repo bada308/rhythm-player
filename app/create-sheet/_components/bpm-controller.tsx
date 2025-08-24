@@ -17,10 +17,12 @@ export default function BpmController({ currentBpm, setBpm }: Props) {
 	};
 
 	return (
-		<div className="flex flex-col items-center space-y-4">
-			<h3 className="text-lg font-semibold text-center">BPM</h3>
-
-			<div className="flex items-center space-x-4">
+		<div className="flex flex-col gap-2 w-fit">
+			<div className="flex gap-2 items-center">
+				<h3 className="text-lg font-semibold">BPM</h3>
+				<div className="text-xs text-gray-500">30-200 BPM</div>
+			</div>
+			<div className="flex items-center gap-4">
 				<Button
 					isIconOnly
 					size="sm"
@@ -30,11 +32,7 @@ export default function BpmController({ currentBpm, setBpm }: Props) {
 				>
 					<Minus size={16} />
 				</Button>
-
-				<div className="text-3xl font-bol min-w-12 text-center">
-					{currentBpm}
-				</div>
-
+				<div className="text-2xl font-bol text-center">{currentBpm}</div>
 				<Button
 					isIconOnly
 					size="sm"
@@ -44,22 +42,19 @@ export default function BpmController({ currentBpm, setBpm }: Props) {
 				>
 					<Plus size={16} />
 				</Button>
+				<NumberInput
+					hideStepper
+					value={currentBpm}
+					min={30}
+					max={200}
+					size="sm"
+					variant="bordered"
+					className="w-24"
+					onValueChange={(value) => {
+						if (!isNaN(value)) setBpm(value);
+					}}
+				/>
 			</div>
-
-			<NumberInput
-				hideStepper
-				value={currentBpm}
-				min={30}
-				max={200}
-				className="w-24"
-				size="sm"
-				variant="bordered"
-				onValueChange={(value) => {
-					if (!isNaN(value)) setBpm(value);
-				}}
-			/>
-
-			<div className="text-xs text-gray-500">30-200 BPM</div>
 		</div>
 	);
 }
