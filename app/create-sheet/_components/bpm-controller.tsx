@@ -17,7 +17,7 @@ export default function BpmController({ currentBpm, setBpm }: Props) {
 	};
 
 	return (
-		<div className="flex flex-col gap-2 w-fit">
+		<div className="flex flex-col w-fit">
 			<div className="flex gap-2 items-center">
 				<h3 className="text-lg font-semibold">BPM</h3>
 				<div className="text-xs text-gray-500">30-200 BPM</div>
@@ -26,17 +26,17 @@ export default function BpmController({ currentBpm, setBpm }: Props) {
 				<Button
 					isIconOnly
 					size="sm"
-					variant="bordered"
+					variant="light"
 					onPress={handleDecrease}
 					isDisabled={currentBpm <= 30}
 				>
 					<Minus size={16} />
 				</Button>
-				<div className="text-2xl font-bol text-center">{currentBpm}</div>
+				<div className="text-2xl font-bol text-center w-12">{currentBpm}</div>
 				<Button
 					isIconOnly
 					size="sm"
-					variant="bordered"
+					variant="light"
 					onPress={handleIncrease}
 					isDisabled={currentBpm >= 200}
 				>
@@ -45,8 +45,8 @@ export default function BpmController({ currentBpm, setBpm }: Props) {
 				<NumberInput
 					hideStepper
 					value={currentBpm}
-					min={30}
-					max={200}
+					minValue={30}
+					maxValue={200}
 					size="sm"
 					variant="bordered"
 					className="w-24"
